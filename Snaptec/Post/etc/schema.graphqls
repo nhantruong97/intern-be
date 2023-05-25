@@ -1,0 +1,18 @@
+input postInput {
+    postId: String
+    title: String!
+    content: String!
+    image: String!
+}
+
+type Posts @doc(description: "This is a description of post in grapql") {
+    title: String @doc(description: "Title")
+    content: String @doc(description: "Content")
+    image: String @doc(description: "Image")
+}
+
+type Mutation {
+    createPost(input: postInput): Posts
+        @resolver(class: "Snaptec\\Post\\Model\\Resolver\\Post")
+        @doc(description: "This is a description of post in grapql")
+}
