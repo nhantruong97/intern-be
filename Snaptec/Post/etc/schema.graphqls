@@ -1,0 +1,17 @@
+type Mutation {
+  savePost(input: SavePostInput!): Post @resolver(class: "\\Snaptec\\Post\\Model\\Resolver\\SavePost") @doc(description: "Save a post")
+}
+
+input SavePostInput {
+  id: String
+  title: String
+  content: String
+  base64_image: String
+}
+type Post {
+  id: String
+  title: String
+  content: String
+  image: String
+}
+
