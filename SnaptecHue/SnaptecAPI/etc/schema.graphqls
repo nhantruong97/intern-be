@@ -1,0 +1,23 @@
+type Mutation {
+    saveBook(input: BookInput!): BookOutput @resolver(class: "\\SnaptecHue\\SnaptecAPI\\Model\\Resolver\\SaveBook") @doc(description:"Input form")
+}
+
+input BookInput {
+    id: Int @doc(description: "The book's id")
+    title: String! @doc(description: "The book's title")
+    content: String! @doc(description: "The book's content")
+    image: ImageInput! @doc(description: "The book's image")
+}
+input ImageInput {
+  base_64_code: String! @doc(description: "The base64 encoded data of the image")
+  name: String! @doc(description: "The name of the image file")
+  type: String! @doc(description: "The MIME type of the image")
+}
+
+type BookOutput {
+    id: Int
+    title: String
+    content: String
+    image: String
+    message: String @doc(description: "status message")
+}
