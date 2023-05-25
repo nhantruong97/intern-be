@@ -28,7 +28,7 @@ class PostRepository implements PostRepositoryInterface
 
 
     /**
-     * Save post
+     * Save the post
      * @return void
      */
     public function save($postId = null, $title, $content, $image = null)
@@ -38,7 +38,7 @@ class PostRepository implements PostRepositoryInterface
             // Validate request 
             $this->_helper->checkEmtyDataOfField(['title' => $title, 'content' => $content]);
 
-            // Hadle data if post exits
+            // Handle data if the post exits
             if (!empty($postId)) {
                 $post = $this->_postFactory->load($postId);
                 if (!$post->getId()) {
@@ -51,7 +51,7 @@ class PostRepository implements PostRepositoryInterface
                 }
                 $urlImage = $this->_helper->uploadImage();
 
-                //  Delete old image in dir of post
+                //  Delete old image of the post
                 $this->_helper->deleteOldImage($post->getImage());
 
                 $data = [

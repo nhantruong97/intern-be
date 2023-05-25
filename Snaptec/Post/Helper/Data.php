@@ -84,7 +84,7 @@ class Data
     }
 
     /**
-     * Check between if equal of title
+     * Check if two titles are the same
      * @return bool 
      */
     public function isEqualTitle(string $oldTitle, string $newTitle)

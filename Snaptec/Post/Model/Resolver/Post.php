@@ -33,6 +33,7 @@ class Post implements ResolverInterface
 
     /**
      * Handle save post in graphql
+     * @return void
      */
     public function resolve(Field $field, $context, ResolveInfo $info, ?array $value = null, ?array $args = null)
     {
@@ -47,19 +48,21 @@ class Post implements ResolverInterface
 
         try {
 
-            // Hadle data if post exits
+            // Handle data if post exits
             if (!empty($postId)) {
                 $post = $this->_postFactory->load($postId);
                 if (!$post->getId()) {
                     throw new Exception(__("The post doesn't exist"));
                 }
+
+                // Check the post exits
                 if ($this->_helper->checkPostAlreadyExits($title)) {
                     throw new Exception(__("The title already exist"));
                 }
-                
+
                 $urlImage = $this->_helper->uploadImageBase64($image);
 
-                //  Delete old image in dir of post
+                //  Delete old image in dir of the post
                 $this->_helper->deleteOldImage($post->getImage());
 
                 $data = [
@@ -77,6 +80,7 @@ class Post implements ResolverInterface
                 return $data;
             }
 
+            // Check the post exits
             if ($this->_helper->checkPostAlreadyExits($title)) {
                 throw new Exception(__("The title already exist"));
             }
