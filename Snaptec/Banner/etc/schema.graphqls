@@ -1,0 +1,21 @@
+type Mutation {
+  createBanner(input: CustomDataInput!): CustomDataOutput @resolver(class: "Snaptec\\Banner\\Model\\Resolver\\BannerSchema") @doc(description: "Add title,content,image of banner")
+}
+
+input CustomDataInput {
+  id: String
+  title: String
+  content: String
+  image: CustomImageInput
+}
+
+input CustomImageInput {
+  base64_image: String
+}
+
+type CustomDataOutput {
+  id: String
+  title: String
+  content: String
+  image_url: String
+}

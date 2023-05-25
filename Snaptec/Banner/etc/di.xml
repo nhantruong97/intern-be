@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Snaptec\Banner\Api\BannerInterface" type="Snaptec\Banner\Model\BannerRepository"/>
+    <type name="Magento\GraphQl\Model\Query\SchemaPool">
+        <arguments>
+            <argument name="schemaDefinitions" xsi:type="array">
+                <item name="banner" xsi:type="string">Snaptec\Banner\Model\Resolver\BannerSchema</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
